@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IP Reputation Checker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 IP Reputation Checker</h1>
+        <form method="POST">
+            <input type="text" name="ip" placeholder="Enter an IP address" required>
+            <button type="submit">Check Reputation</button>
+        </form>
+    </div>
+</body>
+</html>
