@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request
 import requests
 
-# Replace with your API keys
 ABUSEIPDB_KEY = "5a73927f75be965b1168f3390c7f9a6c0d36e52f37d3594e4c9328edc106bd526b61f93c618a6afe"
 OTX_KEY = "6123dad1431816337d18ae34aca8ea8538de1571d464599beec821dd5200ed87"
 
@@ -16,7 +15,6 @@ def check_abuseipdb(ip):
     params = {"ipAddress": ip, "maxAgeInDays": 90}
     response = requests.get(url, headers=headers, params=params)
     data = response.json().get("data", {})
-
     return {
         "IP": ip,
         "Abuse Score": data.get("abuseConfidenceScore", "N/A"),
@@ -30,7 +28,6 @@ def check_otx(ip):
     response = requests.get(url, headers=headers)
     data = response.json()
     pulses = [pulse["name"] for pulse in data.get("pulse_info", {}).get("pulses", [])]
-
     return {
         "Malicious Pulses": len(pulses),
         "Pulse Names": ", ".join(pulses[:3]) or "None"
@@ -45,5 +42,5 @@ def index():
         return render_template("result.html", ip=ip, abuse=abuse_result, otx=otx_result)
     return render_template("index.html")
 
-if __name__ == "__main__":
-    app.run(debug=True)
+if __name__ != "__main__":
+    application = app
